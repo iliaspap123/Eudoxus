@@ -1,0 +1,52 @@
+
+.myheader img {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #555;
+}
+
+.myheader h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+}
+
+body{
+  font-family:Lora;
+  background:url(../img/bg.jpg);
+  background-attachment:fixed;
+  background-position:center;
+  background-size:cover;
+}
+
+
+/* The navigation bar */
+.mytop {
+
+  position: relative;
+ }
+
+
+.navbar {
+ overflow: hidden;
+ background-color: #333;
+ top: 0;
+ width: 100%;
+}
+/*
+/* Links inside the navbar */
+.navbar a {
+ float: left;
+ display: block;
+ color: #f2f2f2;
+ text-align: center;
+ padding: 14px 16px;
+ text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+ background: #ddd;
+ color: black;
+}
