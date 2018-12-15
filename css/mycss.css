@@ -1,52 +1,71 @@
-
-.myheader img {
-  float: left;
-  width: 100px;
-  height: 100px;
-  background: #555;
-}
-
-.myheader h1 {
-  position: relative;
-  top: 18px;
-  left: 10px;
-}
-
 body{
   font-family:Lora;
-  background:url(../img/bg.jpg);
+  background-image:url(../img/bg.jpg) ;
   background-attachment:fixed;
   background-position:center;
   background-size:cover;
+
 }
 
-
-/* The navigation bar */
-.mytop {
-
-  position: relative;
+ nav{
+   margin-top: 50px;
+   background-color: #b3ffcc;
+   padding-top: 14px;
+   padding-bottom: 14px;
  }
 
+ .nav-item{
+   color: #000066;
+   font-size: 21px;
+   margin-left: 20px;
+   margin-right: 20px;
+ }
 
-.navbar {
- overflow: hidden;
- background-color: #333;
- top: 0;
- width: 100%;
-}
-/*
-/* Links inside the navbar */
-.navbar a {
- float: left;
- display: block;
- color: #f2f2f2;
- text-align: center;
- padding: 14px 16px;
- text-decoration: none;
+.card-group{
+  margin-bottom: 0px;
 }
 
-/* Change background on mouse-over */
-.navbar a:hover {
- background: #ddd;
- color: black;
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 150px;
+  background:
+  /* color overlay */
+    linear-gradient(
+      rgba(240, 212, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    );
+}
+
+.footercon{
+  border-radius: 25px;
+  border: 3px solid #73AD21;
+  padding: 20px;
+  width: 210px;
+  height: 170px;
+}
+
+.bor{
+  display: inline-block;
+  border-right: 1px solid white;
+  padding: 30px;
+  margin-left: auto;
+}
+
+.f{
+  display: inline-block;
+}
+
+.first{
+  margin-left: 20%;
+}
+
+.last{
+  margin-right: 20%;
+}
+
+ul{
+  padding: 10px;
 }
