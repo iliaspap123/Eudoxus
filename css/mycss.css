@@ -15,6 +15,7 @@ body{
  }
 
  .nav-item{
+   /* color: blue; */
    color: #000066;
    font-size: 21px;
    margin-left: 20px;
@@ -25,8 +26,22 @@ body{
   margin-bottom: 0px;
 }
 
+.middle {
+  margin: auto;
+  width: 80%;
+  /* border: 3px solid green; */
+  padding: 10px;
+  /* text-align: center; */
+  /* background-color: red; */
+  /* margin: auto; */
+  /* margin-left: 20%; */
+  /* margin-right: 15%; */
+}
+
 footer {
-  position: absolute;
+  /* margin-top: 10px; */
+  /* border: 3px solid red; */
+  position: relative;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
@@ -54,7 +69,11 @@ footer {
   margin-left: auto;
 }
 
+
+
 .f{
+  position: relative;
+  margin: 20px;
   display: inline-block;
 }
 
