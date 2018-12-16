@@ -6,9 +6,47 @@ body{
   background-size:cover;
 }
 
+.search {
+  position: absolute;
+  margin-left: 50%;
+  top: 18px;
+  /* float: center; */
+  /* border: 1px solid yellow; */
+
+  float: left;
+  padding: 6px;
+  border: none;
+}
+
+.search input[type=text] {
+  float: left;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+.myheader img {
+  border: 1px solid yellow;
+  float: left;
+  width: 10%;
+  height: 10%;
+  background: #555;
+}
+
+.myheader h1 {
+  border-right: 1px solid orange;
+  position: relative;
+  top: 18px;
+  left: 10px;
+}
+
+
  nav{
    position: relative;
-   top: 10%;
+   /* top: 2%; */
+   margin-top: 5%;
    width: 100%
    border-right: 1px solid red;
    /* margin-top: 50px; */
@@ -19,13 +57,17 @@ body{
 
  .nav-item{
    /* color: blue; */
-   color: #000066;
+   color: white;
    font-size: 21px;
    margin-left: 20px;
    margin-right: 20px;
  }
 
 #myfont {
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+  font-size: 100%;
   border: none;
 }
 
