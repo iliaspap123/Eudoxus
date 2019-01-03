@@ -16,10 +16,13 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
+	
 
 </head>
 
 <body>
+	
+
     <!-- Preloader -->
     <div class="preloader d-flex align-items-center justify-content-center">
         <div class="spinner">
@@ -85,7 +88,7 @@
                                 <ul>
                                     <li><a href="#">Φοιτητής</a>
                                         <ul class="dropdown">
-                                            <li><a href="dhlwsh.html">Δήλωση Συγγραμμάτων</a></li>
+                                            <li><a href="#">Δήλωση Συγγραμμάτων</a></li>
                                             <li><a href="#">Εύδοξος +</a></li>
                                             <li><a href="map.html">Σημεία Διανομής</a></li>
                                             <li><a href="#">Παράδοση Συγγραμμάτων</a></li>
@@ -120,6 +123,8 @@
 					
 					<ul class="breadcrumb">
 						<li><a href="index.html">Αρχική</a></li>
+						<li>  »  <li>
+						<li><a href="dhlwsh.html">Δήλωση Συγγραμμάτων</a></li>
 					</ul>
                 </div>
             </div>
@@ -130,33 +135,61 @@
 
     <!-- ##### Games Area Start ##### -->
     <div class="games-area section-padding-100-0">
-        <div class="container">
-            <div class="row">
-                <!-- Single Games Area -->
-                <div class="col-12 col-md-4">
-                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="100ms">
-                        <img src="img/bg-img/book2.png" alt="">
-                        <a href="dhlwsh.html" class="btn egames-btn mt-30">Δήλωση Συγγραμμάτων</a>
-                    </div>
-                </div>
+        <div class="container" id="pad">
+			<p>
+			Επελεξε εξάμηνο   
 
-                <!-- Single Games Area -->
-                <div class="col-12 col-md-4">
-                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="300ms">
-                        <img src="img/bg-img/desk2.png" alt="">
-                        <a href="#" class="btn egames-btn mt-30">Διαχείριση Συγγραμμάτων-Μαθημάτων</a>
-                    </div>
-                </div>
+			<select id="mySelect" onchange="myFunction()">
+			  <option value="1ο Εξάμηνο">1ο Εξάμηνο
+			  <option value="3ο Εξάμηνο">3ο Εξάμηνο
+			  <option value="5ο Εξάμηνο">5ο Εξάμηνο
+			  <option value="7ο Εξάμηνο">7ο Εξάμηνο
+			</select>
+			
+			</p>
+            <button class="accordion"><p id="p1"> sub 1 </p></button>
+			<div class="panel">
+			  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
 
-                <!-- Single Games Area -->
-                <div class="col-12 col-md-4">
-                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="500ms">
-                        <img src="img/bg-img/pencil2.png" alt="">
-                        <a href="#" class="btn egames-btn mt-30">Διανομή Συγγραμμάτων</a>
-                    </div>
-                </div>
-            </div>
+			<button class="accordion"><p id="p2"> sub 2 </p></button>
+			<div class="panel">
+			  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+
+			<button class="accordion"><p id="p3"> sub 3 </p></button>
+			<div class="panel">
+			  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+			<button class="accordion"><p id="p4"> sub 4 </p></button>
+			<div class="panel">
+			  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+			
         </div>
+		<script>
+		function myFunction() {
+		  var x = document.getElementById("mySelect").value;
+		  document.getElementById("p1").innerHTML = "sub 1 "+ x;
+		  document.getElementById("p2").innerHTML = "sub 2 "+ x;
+		  document.getElementById("p3").innerHTML = "sub 3 "+ x;
+		  document.getElementById("p4").innerHTML = "sub 4 "+ x;
+		}
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+		  acc[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var panel = this.nextElementSibling;
+			if (panel.style.maxHeight){
+			  panel.style.maxHeight = null;
+			} else {
+			  panel.style.maxHeight = panel.scrollHeight + "px";
+			} 
+		  });
+		}
+		</script>
     </div>
     <!-- ##### Games Area End ##### -->
 
