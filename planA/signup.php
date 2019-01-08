@@ -136,23 +136,34 @@
 
                             <!-- Reply Form -->
                             <div class="contact-form-area">
-                                <form action="connect.php" method="post">
+                                <form action="signup.php" method="post">
                                     <div class="row">
                                         <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="text" placeholder="Username*" name="username">
+                                          <input type="text" class="form-control" id="text" placeholder="Όνομα χρήστη*" name="username">
                                         </div>
                                         <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Password*" name="password">
+                                          <input type="text" class="form-control" id="name" placeholder="Κωδικός πρόσβασης*" name="password">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Ίδρυμα*" name="idruma">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Σχολή*" name="sxolh">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="email" class="form-control" id="name" placeholder="Email*" name="email">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Τηλέφωνο*" name="thlefwno">
                                         </div>
                                         <div class="col-12">
-                                            <button class="btn egames-btn w-100" type="submit">Είσοδος</button>
+                                            <button class="btn egames-btn w-100" type="submit">Εγγραφή</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
 
-                        <a href="signup.php" class="signup">Εγγραφή</a>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 ul.breadcrumb {
   padding: 10px 0px;
   list-style: none;
-  background-color: white; 
+  background-color: white;
 }
 
 /* Display list items side by side */
@@ -14,7 +14,7 @@ ul.breadcrumb li {
 ul.breadcrumb li+li:before {
   /* padding: 8px; */
   color: black;
-  content: "\00a0"; 
+  content: "\00a0";
 }
 
 /* Add a color to all links inside the list */
