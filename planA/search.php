@@ -1,3 +1,23 @@
+<?php
+  $title=$_POST['top-search'];
+  $conn = new mysqli("localhost", "root", "", "my_database");
+  if ($conn->connect_error) die($conn->connect_error);
+
+  $query = "SELECT * FROM books WHERE title='$title'";
+  $result = $conn->query($query);
+  if (!$result) die($conn->error);
+
+  $row = $result->fetch_assoc();
+
+  // if($row['title'] == $title ){
+  //     mysqli_close($conn);
+  // }
+  // else{
+  //     mysqli_close($conn);
+  // }
+  mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,24 +65,14 @@
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="search.php" method="post">
+                                <form action="#" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                             <!-- Login Area -->
                             <div class="login-area">
-                              <?php
-                                if ( isset($_GET['login']) ){
-                              ?>
-                                <a href="login.php"><span><?php echo $_GET['login'] ?></span> <i class="fa fa-lock" aria-hidden="true"></i></a>
-                              <?php
-                                } else{
-                              ?>
-                                <a href="login.php"><span>Είσοδος / Εγγραφή</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
-                              <?php
-                              }
-                              ?>
+                                <a href="#"><span>Είσοδος / Εγγραφή</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -95,80 +105,94 @@
                                 <ul>
                                     <li><a href="#">Φοιτητής</a>
                                         <ul class="dropdown">
-                                            <li><a href="dhlwsh.html">Δήλωση Συγγραμμάτων</a></li>
+                                            <li><a href="#">ΔήλωσηΣυγγραμμάτων</a></li>
                                             <li><a href="#">Εύδοξος +</a></li>
-                                            <li><a href="map.html">Σημεία Διανομής</a></li>
+                                            <li><a href="#">Σημεία Διανομής</a></li>
                                             <li><a href="#">Παράδοση Συγγραμμάτων</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Γραμματεία</a>
                                         <ul class="dropdown">
-                                            <li><a href="#">Διαχείριση Συγγραμμάτων</a></li>
+                                            <li><a href="#">Διαχείριση</a></li>
                                             <li><a href="#">Διαχείριση Γραμματείας</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Εκδότης</a>
                                         <ul class="dropdown">
-                                            <li><a href="#">Διαχείριση Συγγραμμάτων</a></li>
-                                            <li><a href="#">Υπηρεσία Ταχυμεταφοράς</a></li>
-                                            <li><a href="#">Κοστολόγηση</a></li>
+                                            <li><a href="#">----------------</a></li>
+                                            <li><a href="#">----------------</a></li>
+                                            <li><a href="#">----------------</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#l">Βιβλιοπωλείο</a>
                                         <ul class="dropdown">
-                                          <li><a href="#">Διαχείριση Συγγραμμάτων</a></li>
-                                          <li><a href="#">Παράδοση Συγγραμμάτων</a></li>
+                                          <li><a href="#">----------------</a></li>
+                                          <li><a href="#">----------------</a></li>
+                                          <li><a href="#">----------------</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="announcement.html">Ανακοινώσεις</a></li>
+                                    <li><a href="#">Ανακοινώσεις</a></li>
                                     <li><a href="contact.html">Επικοινωνία</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
                         </div>
                     </nav>
-
-					<ul class="breadcrumb">
-						<li><a href="index.php">Αρχική</a></li>
-					</ul>
                 </div>
             </div>
         </div>
-
     </header>
     <!-- ##### Header Area End ##### -->
 
-    <!-- ##### Games Area Start ##### -->
-    <div class="games-area section-padding-100-0">
+    <!-- ##### Articles Area Start ##### -->
+    <section class="articles-area section-padding-0-100">
         <div class="container">
-            <div class="row">
-                <!-- Single Games Area -->
-                <div class="col-12 col-md-4">
-                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="100ms">
-                        <img src="img/bg-img/book2.png" alt="">
-                        <a href="dhlwsh.html" class="btn egames-btn mt-30">Δήλωση Συγγραμμάτων</a>
-                    </div>
-                </div>
+            <div class="row justify-content-center">
+                <!-- Articles Post Area -->
+                <div class="col-12 col-lg-8">
+                    <div class="mt-100">
 
-                <!-- Single Games Area -->
-                <div class="col-12 col-md-4">
-                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="300ms">
-                        <img src="img/bg-img/desk2.png" alt="">
-                        <a href="#" class="btn egames-btn mt-30">Διαχείριση Συγγραμμάτων-Μαθημάτων</a>
-                    </div>
-                </div>
+                        <ol>
+                        <!-- *** Single Articles Area *** -->
+                        <?php
+                          if ( strlen($title)!=0){
+                          if($row['title'] == $title ){
+                            echo $row['title'];
+                        ?>
+                          <li>
+                            <div class="single-articles-area d-flex flex-wrap mb-30">
+                                <div class="article-thumbnail">
+                                    <img src="img/books/1.jpg" alt="">
+                                </div>
+                                <div class="article-content">
+                                    <a href="single-post.html" class="post-title">title</a>
+                                    <div class="post-meta">
+                                        <a href="#" class="post-date">year</a>
+                                        <a href="#" class="post-comments">author</a>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam.</p>
+                                </div>
+                            </div>
+                          </li>
+                        <?php
+                          }}
+                        ?>
+                      </ol>
 
-                <!-- Single Games Area -->
-                <div class="col-12 col-md-4">
-                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="500ms">
-                        <img src="img/bg-img/pencil2.png" alt="">
-                        <a href="#" class="btn egames-btn mt-30">Διανομή Συγγραμμάτων</a>
+                        <!-- ### Pagination Area ### -->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination mt-100">
+                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                <li class="page-item"><a class="page-link" href="#">03</a></li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- ##### Games Area End ##### -->
+    </section>
+    <!-- ##### Articles Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
@@ -207,7 +231,7 @@
                                 <nav>
                                     <ul>
                                         <li><a href="#">Ποιές είναι οι αρμοδιότητές μου;</a></li>
-                                        <li><a href="#">Πως να διαχειριστώ συγγράμματα;</a></li>
+                                        <li><a href="#">Πως να δαιχειριστώ συγγράμματα;</a></li>
                                         <li><a href="#">Πως να διαχειριστώ μαθήματα;</a></li>
                                         <!-- <li><a href="#">God of war</a></li>
                                         <li><a href="#">Persona 5</a></li> -->
@@ -226,8 +250,9 @@
                             <div class="widget-content">
                                 <nav>
                                     <ul>
-                                        <li><a href="#">Ποιές είναι οι ενέργειές μου;</a></li>
-                                        <li><a href="#">Τι μου προσφέρει ο Εύδοξος;</a></li>
+                                        <li><a href="#">----------------</a></li>
+                                        <li><a href="#">----------------</a></li>
+                                        <li><a href="#">----------------</a></li>
                                         <!-- <li><a href="#">Forum</a></li>
                                         <li><a href="#">Contact</a></li> -->
                                     </ul>
@@ -245,11 +270,11 @@
                             <div class="widget-content">
                                 <nav>
                                     <ul>
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#">Ποιές είναι οι αρμοδιότητές μου;</a></li>
-                                        <li><a href="#">Πως να προσθέσω βιβλία;</a></li>
-                                        <!-- <li><a href="#">Πως να προσθέσω βιβλία;</a></li> -->
-                                        <!-- <li><a href="#">Persona 5</a></li> -->
+                                        <li><a href="#">----------------</a></li>
+                                        <li><a href="#">----------------</a></li>
+                                        <li><a href="#">----------------</a></li>
+                                        <!-- <li><a href="#">God of war</a></li>
+                                        <li><a href="#">Persona 5</a></li> -->
                                     </ul>
                                 </nav>
                             </div>

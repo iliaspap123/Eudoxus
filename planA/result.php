@@ -111,7 +111,7 @@
                                           <li><a href="#">----------------</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="announcement.html">Ανακοινώσεις</a></li>
+                                    <li><a href="#">Ανακοινώσεις</a></li>
                                     <li><a href="contact.html">Επικοινωνία</a></li>
                                 </ul>
                             </div>
@@ -124,52 +124,154 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-    <!-- ##### Post Details Area Start ##### -->
-    <section class="post-news-area section-padding-0-100">
+    <!-- ##### Articles Area Start ##### -->
+    <section class="articles-area section-padding-0-100">
         <div class="container">
             <div class="row justify-content-center">
-                <!-- Post Details Content Area -->
+                <!-- Articles Post Area -->
                 <div class="col-12 col-lg-8">
                     <div class="mt-100">
-                        <div class="post-a-comment-area mb-30 clearfix" id="reply">
-                            <h4 class="mb-50">Εισαγωγή Στοιχείων</h4>
 
-                            <!-- Reply Form -->
-                            <div class="contact-form-area">
-                                <form action="insert.php" method="post">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="text" placeholder="Όνομα χρήστη*" name="username">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Κωδικός πρόσβασης*" name="password">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Ίδρυμα*" name="idruma">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Σχολή*" name="sxolh">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="email" class="form-control" id="name" placeholder="Email*" name="email">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Τηλέφωνο*" name="thlefwno">
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn egames-btn w-100" type="submit">Εγγραφή</button>
-                                        </div>
+                        <ol>
+                        <!-- *** Single Articles Area *** -->
+                          <li>
+                            <div class="single-articles-area d-flex flex-wrap mb-30">
+                                <div class="article-thumbnail">
+                                    <img src="img/books/1.jpg" alt="">
+                                </div>
+                                <div class="article-content">
+                                    <a href="single-post.html" class="post-title">title</a>
+                                    <div class="post-meta">
+                                        <a href="#" class="post-date">year</a>
+                                        <a href="#" class="post-comments">author</a>
                                     </div>
-                                </form>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam.</p>
+                                </div>
+                            </div>
+                          </li>
+
+                        <!-- *** Single Articles Area *** -->
+                        <li>
+                          <div class="single-articles-area d-flex flex-wrap mb-30">
+                              <div class="article-thumbnail">
+                                  <img src="img/books/2.jpg" alt="">
+                              </div>
+                              <div class="article-content">
+                                  <a href="single-post.html" class="post-title">10 Tips to be a better gamer</a>
+                                  <div class="post-meta">
+                                      <a href="#" class="post-date">July 12, 2018</a>
+                                      <a href="#" class="post-comments">2 Comments</a>
+                                  </div>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam.</p>
+                              </div>
+                          </div>
+                        </li>
+
+                        <!-- *** Single Articles Area *** -->
+                        <div class="single-articles-area d-flex flex-wrap mb-30">
+                            <div class="article-thumbnail">
+                                <img src="img/books/3.jpg" alt="">
+                            </div>
+                            <div class="article-content">
+                                <a href="single-post.html" class="post-title">Microsoft has some new tips</a>
+                                <div class="post-meta">
+                                    <a href="#" class="post-date">July 12, 2018</a>
+                                    <a href="#" class="post-comments">2 Comments</a>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam.</p>
                             </div>
                         </div>
 
+                        <!-- *** Single Articles Area *** -->
+                        <div class="single-articles-area d-flex flex-wrap mb-30">
+                            <div class="article-thumbnail">
+                                <img src="img/bg-img/9.jpg" alt="">
+                            </div>
+                            <div class="article-content">
+                                <a href="single-post.html" class="post-title">Sony’s new releases for 2018</a>
+                                <div class="post-meta">
+                                    <a href="#" class="post-date">July 12, 2018</a>
+                                    <a href="#" class="post-comments">2 Comments</a>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam.</p>
+                            </div>
+                        </div>
+
+                        <!-- *** Single Articles Area *** -->
+                        <div class="single-articles-area d-flex flex-wrap mb-30">
+                            <div class="article-thumbnail">
+                                <img src="img/bg-img/10.jpg" alt="">
+                            </div>
+                            <div class="article-content">
+                                <a href="single-post.html" class="post-title">10 Tips to be a better gamer</a>
+                                <div class="post-meta">
+                                    <a href="#" class="post-date">July 12, 2018</a>
+                                    <a href="#" class="post-comments">2 Comments</a>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam.</p>
+                            </div>
+                        </div>
+
+                        <!-- *** Single Articles Area *** -->
+                        <div class="single-articles-area d-flex flex-wrap mb-30">
+                            <div class="article-thumbnail">
+                                <img src="img/bg-img/11.jpg" alt="">
+                            </div>
+                            <div class="article-content">
+                                <a href="single-post.html" class="post-title">Microsoft has some new tips</a>
+                                <div class="post-meta">
+                                    <a href="#" class="post-date">July 12, 2018</a>
+                                    <a href="#" class="post-comments">2 Comments</a>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam.</p>
+                            </div>
+                        </div>
+
+                        <!-- *** Single Articles Area *** -->
+                        <div class="single-articles-area d-flex flex-wrap mb-30">
+                            <div class="article-thumbnail">
+                                <img src="img/bg-img/12.jpg" alt="">
+                            </div>
+                            <div class="article-content">
+                                <a href="single-post.html" class="post-title">Sony’s new releases for 2018</a>
+                                <div class="post-meta">
+                                    <a href="#" class="post-date">July 12, 2018</a>
+                                    <a href="#" class="post-comments">2 Comments</a>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam.</p>
+                            </div>
+                        </div>
+
+                        <!-- *** Single Articles Area *** -->
+                        <div class="single-articles-area d-flex flex-wrap mb-30">
+                            <div class="article-thumbnail">
+                                <img src="img/bg-img/13.jpg" alt="">
+                            </div>
+                            <div class="article-content">
+                                <a href="single-post.html" class="post-title">10 Tips to be a better gamer</a>
+                                <div class="post-meta">
+                                    <a href="#" class="post-date">July 12, 2018</a>
+                                    <a href="#" class="post-comments">2 Comments</a>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam.</p>
+                            </div>
+                        </div>
+                      </ol>
+
+                        <!-- ### Pagination Area ### -->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination mt-100">
+                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                <li class="page-item"><a class="page-link" href="#">03</a></li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ##### Post Details Area End ##### -->
+    <!-- ##### Articles Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">

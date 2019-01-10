@@ -152,7 +152,7 @@
                             </div>
                         </div>
 
-                        <a href="signup.php" class="signup">Εγγραφή</a>
+                        <a href="signup.php" id="signup">Εγγραφή</a>
                     </div>
                 </div>
             </div>
