@@ -1,13 +1,14 @@
 <?php
-  $title=$_POST['top-search'];
-  $conn = new mysqli("localhost", "root", "", "my_database");
+  $input=$_POST['top-search'];
+  $conn = new mysqli("localhost", "root", "", "database");
   if ($conn->connect_error) die($conn->connect_error);
+  mysqli_set_charset($conn, "utf8");
 
-  $query = "SELECT * FROM books WHERE title='$title'";
+  $query = "SELECT * FROM book WHERE title LIKE '%$input%' OR isbn LIKE '%$input%' OR author LIKE '%$input%' OR publisher LIKE '%$input%' OR bookstore LIKE '%$input%' OR year LIKE '%$input%' OR info LIKE '%$input%'";
   $result = $conn->query($query);
   if (!$result) die($conn->error);
 
-  $row = $result->fetch_assoc();
+  // $row = $result->fetch_assoc();
 
   // if($row['title'] == $title ){
   //     mysqli_close($conn);
@@ -155,22 +156,27 @@
                         <ol>
                         <!-- *** Single Articles Area *** -->
                         <?php
-                          if ( strlen($title)!=0){
-                          if($row['title'] == $title ){
-                            echo $row['title'];
+                          if ( strlen($input)!=0){
+                            $rows = $result->num_rows;
+                            // echo $rows;
+                            for ( $j=0; $j<$rows; ++$j ){
+                              $result->data_seek($j);
+                              $line = $result->fetch_assoc();
+                            // if($row['title'] == $title ){
+                            //   echo $row['title'];
                         ?>
                           <li>
                             <div class="single-articles-area d-flex flex-wrap mb-30">
                                 <div class="article-thumbnail">
-                                    <img src="img/books/1.jpg" alt="">
+                                    <img src="<?php echo $line['img']; ?>" alt="">
                                 </div>
                                 <div class="article-content">
-                                    <a href="single-post.html" class="post-title">title</a>
+                                    <a href="single-post.html" class="post-title">  <?php echo $line['title']; ?> </a>
                                     <div class="post-meta">
-                                        <a href="#" class="post-date">year</a>
-                                        <a href="#" class="post-comments">author</a>
+                                        <a href="#" class="post-date"><?php echo $line['year']; ?></a>
+                                        <a href="#" class="post-comments"><?php echo $line['author']; ?></a>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris velit arcu, scelerisque dignissim massa quis, mattis facilisis erat. Aliquam erat volutpat. Sed efficitur diam.</p>
+                                    <p><?php echo $line['info']; ?></p>
                                 </div>
                             </div>
                           </li>
@@ -178,15 +184,8 @@
                           }}
                         ?>
                       </ol>
+                      <p class="signup"><a ><?php echo "Βρέθηκαν $rows αποτελέσματα" ?></p>
 
-                        <!-- ### Pagination Area ### -->
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination mt-100">
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>
