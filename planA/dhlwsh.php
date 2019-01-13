@@ -1,3 +1,31 @@
+<?php
+
+  $conn = new mysqli("localhost", "root", "", "database");
+  if ($conn->connect_error) die($conn->connect_error);
+  mysqli_set_charset($conn, "utf8");
+
+  $query = "SELECT * FROM book";
+  $result = $conn->query($query);
+  if (!$result) die($conn->error);
+
+  $row = $result->fetch_assoc();
+
+
+
+  $query2 = "SELECT * FROM class";
+  $result2 = $conn->query($query2);
+  if (!$result2) die($conn->error);
+
+  $row2 = $result2->fetch_assoc();
+
+  // if($row['title'] == $title ){
+  //     mysqli_close($conn);
+  // }
+  // else{
+  //     mysqli_close($conn);
+  // }
+  mysqli_close($conn);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,7 +152,7 @@
 					<ul class="breadcrumb">
 						<li><a href="index.php">Αρχική</a></li>
 						<li>  »  <li>
-						<li><a href="dhlwsh.html">Δήλωση Συγγραμμάτων</a></li>
+						<li><a href="dhlwsh.php">Δήλωση Συγγραμμάτων</a></li>
 					</ul>
                 </div>
             </div>
@@ -137,53 +165,74 @@
     <div class="games-area section-padding-100-0">
         <div class="container" id="pad">
 			<p>
-			Επελεξε εξάμηνο
+			Επελεξε σχολή
 
-			<select id="mySelect" onchange="myFunction()">
-			  <option value="1ο Εξάμηνο">1ο Εξάμηνο
-			  <option value="3ο Εξάμηνο">3ο Εξάμηνο
-			  <option value="5ο Εξάμηνο">5ο Εξάμηνο
-			  <option value="7ο Εξάμηνο">7ο Εξάμηνο
+			<select id="mySelect2" onchange="myFunction2()">
+        <!-- <option value=""> -->
+			  <option value="Φυσικό">Φυσικό
+			  <option value="Πληροφορική">Πληροφορική
+			  <option value="Σχολή 3">Σχολή 3
+			  <option value="Σχολή 4">Σχολή 4
+			</select>
+      Επέλεξε εξάμηνο
+      <select id="mySelect" onchange="myFunction()">
+			  <option value="1">1ο Εξάμηνο
+			  <option value="3">3ο Εξάμηνο
+			  <option value="5">5ο Εξάμηνο
+			  <option value="7">7ο Εξάμηνο
 			</select>
 
 			</p>
-      <div id="myId">
-        <button class="accordion"><p id="p1"> sub 1 </p></button>
-  			<div class="panel">
-          <form action="/action_page.php">
-            <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-            <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
-            <input type="checkbox" name="vehicle3" value="Boat" checked> I have a boat<br><br>
-          </form>
-      </div>
 
-  			<button class="accordion"><p id="p2"> sub 2 </p></button>
-  			<div class="panel">
-          <form action="/action_page.php">
-            <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-            <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
-            <input type="checkbox" name="vehicle3" value="Boat" checked> I have a boat<br><br>
-          </form>
-  			</div>
+      <?php
+      $rows2 = $result2->num_rows;
 
-  			<button class="accordion"><p id="p3"> sub 3 </p></button>
+      for($i=0; $i<$rows2; ++$i) {
+        $result2->data_seek($i);
+        $line2 = $result2->fetch_assoc();
+      ?>
+        <button class="accordion"><div id="p1"> <?php echo $line2['name'] ?> </div></button>
   			<div class="panel">
-          <form action="/action_page.php">
-            <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-            <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
-            <input type="checkbox" name="vehicle3" value="Boat" checked> I have a boat<br><br>
+          <?php
+
+              $rows = $result->num_rows;
+              for($j=0; $j<$rows; ++$j) {
+                $result->data_seek($j);
+                $line = $result->fetch_assoc();
+                if($line2['name'] == $line['class']) {
+           ?>
+          <form action="/action_page.php" style="margin-top: 15px;">
+            <label>
+            <input type="checkbox" name="vehicle1" value="Bike" />
+            <div  style=" width: 70%;">
+              <div class="single-articles-area d-flex flex-wrap mb-30">
+                  <div class="article-thumbnail">
+                      <img src=" <?php echo $line['img']; ?>" alt="">
+                  </div>
+                  <div class="article-content">
+                      <a href="single-post.html" class="post-title"> <?php echo $line['title']; ?> </a>
+                      <div class="post-meta">
+                          <a href="#" class="post-date"> <?php echo $line['year']; ?></a>
+                          <a href="#" class="post-comments"> <?php echo $line['author']; ?></a>
+                      </div>
+                      <p> <?php echo $line['info']; ?></p>
+                  </div>
+                </div>
+              </div>
+            </label>
+            <br>
+            <?php
+            }
+            }
+            ?>
           </form>
   			</div>
-  			<button class="accordion"><p id="p4"> sub 4 </p></button>
-  			<div class="panel">
-          <form action="/action_page.php">
-            <input type="checkbox" name="vehicle1" value="Bike"> I have a bike<br>
-            <input type="checkbox" name="vehicle2" value="Car"> I have a car<br>
-            <input type="checkbox" name="vehicle3" value="Boat" checked> I have a boat<br><br>
-          </form>
-  			</div>
-        <input type="submit" value="Submit">
-      </div>
+        <?php
+        }
+        ?>
+        <a href="dhlwsh.php" class="btn egames-btn mt-30">Ακύρωση</a>
+        <a href="dhlwsh.php" class="btn egames-btn mt-30">Υποβολή</a>
+
     </div>
 		<script>
 		function myFunction() {
@@ -207,6 +256,11 @@
 			}
 		  });
 		}
+    var elements = document.getElementsByTagName("INPUT");
+    for (var inp of elements) {
+        if (inp.type === "checkbox")
+            inp.checked = false;
+    }
 		</script>
     </div>
     <!-- ##### Games Area End ##### -->

@@ -1,7 +1,7 @@
 <?php
   $username=$_POST['username'];
   $password = $_POST['password'];
-  $conn = new mysqli("localhost", "root", "", "my_database");
+  $conn = new mysqli("localhost", "root", "", "database");
   if ($conn->connect_error) die($conn->connect_error);
 
   $query = "SELECT * FROM users WHERE username='$username' and password='$password'";

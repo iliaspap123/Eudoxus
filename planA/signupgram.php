@@ -156,6 +156,9 @@
                                         <div class="col-12 col-lg-6">
                                           <input type="text" class="form-control" id="name" placeholder="Τηλέφωνο*" name="thlefwno">
                                         </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Πρόεδρος Τμήματος*" name="proedros_tmhmatos">
+                                        </div>
                                         <div class="col-12">
                                             <button class="btn egames-btn w-100" type="submit">Εγγραφή</button>
                                         </div>
@@ -163,7 +166,6 @@
                                 </form>
                             </div>
                         </div>
-                        <p class="signup"> <a href="signupgram.php" >Εγγραφή Γραμματείας</p>                                
 
                     </div>
                 </div>

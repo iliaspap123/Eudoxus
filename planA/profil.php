@@ -1,3 +1,30 @@
+<?php
+  $login=$_GET['login'];
+  $conn = new mysqli("localhost", "root", "", "database");
+  if ($conn->connect_error) die($conn->connect_error);
+  mysqli_set_charset($conn, "utf8");
+
+  $query = "SELECT * FROM users WHERE username='$login'";
+  $result = $conn->query($query);
+  if (!$result) die($conn->error);
+
+  $row = $result->fetch_assoc();
+
+  $type = $row['type'];
+  if( $type == 'f' ){
+    $query = "SELECT * FROM foithtes WHERE username='$login'";
+    $result = $conn->query($query);
+    if (!$result) die($conn->error);
+  }
+  else{
+    $query = "SELECT * FROM gramatteies WHERE username='$login'";
+    $result = $conn->query($query);
+    if (!$result) die($conn->error);
+  }
+  $row = $result->fetch_assoc();
+  mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,38 +159,76 @@
                 <div class="col-12 col-lg-8">
                     <div class="mt-100">
                         <div class="post-a-comment-area mb-30 clearfix" id="reply">
-                            <h4 class="mb-50">Εισαγωγή Στοιχείων</h4>
+                            <h4 class="mb-50">Επεξεργασία Στοιχείων</h4>
 
                             <!-- Reply Form -->
+                            <?php
+                              if ( $type == 'f' ){
+                            ?>
                             <div class="contact-form-area">
                                 <form action="insert.php" method="post">
                                     <div class="row">
                                         <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="text" placeholder="Όνομα χρήστη*" name="username">
+                                          <input type="text" class="form-control" id="text" placeholder="<?php echo $row['username']?>" name="username">
                                         </div>
                                         <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Κωδικός πρόσβασης*" name="password">
+                                          <input type="text" class="form-control" id="name" placeholder="Εισαγωγή νέου κωδικού*" name="password">
                                         </div>
                                         <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Ίδρυμα*" name="idruma">
+                                          <input type="text" class="form-control" id="name" placeholder="<?php echo $row['idruma']?>" name="idruma">
                                         </div>
                                         <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Σχολή*" name="sxolh">
+                                          <input type="text" class="form-control" id="name" placeholder="<?php echo $row['sxolh']?>" name="sxolh">
                                         </div>
                                         <div class="col-12 col-lg-6">
-                                          <input type="email" class="form-control" id="name" placeholder="Email*" name="email">
+                                          <input type="email" class="form-control" id="name" placeholder="<?php echo $row['email']?>" name="email">
                                         </div>
                                         <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Τηλέφωνο*" name="thlefwno">
+                                          <input type="text" class="form-control" id="name" placeholder="<?php echo $row['thlefwno']?>" name="thlefwno">
                                         </div>
                                         <div class="col-12">
-                                            <button class="btn egames-btn w-100" type="submit">Εγγραφή</button>
+                                            <button class="btn egames-btn w-100" type="submit">Υποβολή Αλλαγών</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
+                            <?php
+                            }else{
+                            ?>
+                            <div class="contact-form-area">
+                                <form action="insert.php" method="post">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="text" placeholder="<?php echo $row['username']?>" name="username">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Εισαγωγή νέου κωδικού*" name="password">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="<?php echo $row['idruma']?>" name="idruma">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="<?php echo $row['sxolh']?>" name="sxolh">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="email" class="form-control" id="name" placeholder="<?php echo $row['email']?>" name="email">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="<?php echo $row['thlefwno']?>" name="thlefwno">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="<?php echo $row['proedros_tmhmatos']?>" name="proedros_tmhmatos">
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn egames-btn w-100" type="submit">Υποβολή Αλλαγών</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                          <?php
+                            }
+                          ?>
                         </div>
-                        <p class="signup"> <a href="signupgram.php" >Εγγραφή Γραμματείας</p>                                
 
                     </div>
                 </div>

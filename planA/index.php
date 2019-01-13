@@ -55,7 +55,7 @@
                               <?php
                                 if ( isset($_GET['login']) ){
                               ?>
-                                <a href="login.php"><span><?php echo $_GET['login'] ?></span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                                <a href="profil.php?login=<?php echo $_GET['login']; ?>"><span><?php echo $_GET['login'] ?></span> <i class="fa fa-lock" aria-hidden="true"></i></a>
                               <?php
                                 } else{
                               ?>
@@ -95,7 +95,7 @@
                                 <ul>
                                     <li><a href="#">Φοιτητής</a>
                                         <ul class="dropdown">
-                                            <li><a href="dhlwsh.html">Δήλωση Συγγραμμάτων</a></li>
+                                            <li><a href="dhlwsh.php">Δήλωση Συγγραμμάτων</a></li>
                                             <li><a href="#">Εύδοξος +</a></li>
                                             <li><a href="map.html">Σημεία Διανομής</a></li>
                                             <li><a href="#">Παράδοση Συγγραμμάτων</a></li>
@@ -146,7 +146,7 @@
                 <div class="col-12 col-md-4">
                     <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="100ms">
                         <img src="img/bg-img/book2.png" alt="">
-                        <a href="dhlwsh.html" class="btn egames-btn mt-30">Δήλωση Συγγραμμάτων</a>
+                        <a href="dhlwsh.php" class="btn egames-btn mt-30">Δήλωση Συγγραμμάτων</a>
                     </div>
                 </div>
 
