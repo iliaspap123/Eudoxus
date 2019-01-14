@@ -132,11 +132,11 @@
                 <div class="col-12 col-lg-8">
                     <div class="mt-100">
                         <div class="post-a-comment-area mb-30 clearfix" id="reply">
-                            <h4 class="mb-50">Εισαγωγή Στοιχείων</h4>
+                            <h4 class="mb-50">Εισαγωγή Στοιχείων Γραμματείας</h4>
 
                             <!-- Reply Form -->
                             <div class="contact-form-area">
-                                <form action="insert.php" method="post">
+                                <form action="insertgram.php" method="post">
                                     <div class="row">
                                         <div class="col-12 col-lg-6">
                                           <input type="text" class="form-control" id="text" placeholder="Όνομα χρήστη*" name="username">

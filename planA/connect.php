@@ -4,6 +4,10 @@
   $conn = new mysqli("localhost", "root", "", "database");
   if ($conn->connect_error) die($conn->connect_error);
 
+  if( !strlen($username) or !strlen($password)) {
+    mysqli_close($conn);
+    header('Location: login.php?login1=false');
+  }
   $query = "SELECT * FROM users WHERE username='$username' and password='$password'";
   $result = $conn->query($query);
   if (!$result) die($conn->error);

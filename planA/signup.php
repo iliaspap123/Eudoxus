@@ -132,7 +132,7 @@
                 <div class="col-12 col-lg-8">
                     <div class="mt-100">
                         <div class="post-a-comment-area mb-30 clearfix" id="reply">
-                            <h4 class="mb-50">Εισαγωγή Στοιχείων</h4>
+                            <h4 class="mb-50">Εισαγωγή Στοιχείων Φοιτητή</h4>
 
                             <!-- Reply Form -->
                             <div class="contact-form-area">
@@ -163,7 +163,7 @@
                                 </form>
                             </div>
                         </div>
-                        <p class="signup"> <a href="signupgram.php" >Εγγραφή Γραμματείας</p>                                
+                        <p class="signup"> <a href="signupgram.php" >Εγγραφή Γραμματείας</p>
 
                     </div>
                 </div>

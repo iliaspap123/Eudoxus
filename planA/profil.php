@@ -166,7 +166,7 @@
                               if ( $type == 'f' ){
                             ?>
                             <div class="contact-form-area">
-                                <form action="insert.php" method="post">
+                                <form action="change.php?login=<?php echo $row['username']?>" method="post">
                                     <div class="row">
                                         <div class="col-12 col-lg-6">
                                           <input type="text" class="form-control" id="text" placeholder="<?php echo $row['username']?>" name="username">
@@ -196,7 +196,7 @@
                             }else{
                             ?>
                             <div class="contact-form-area">
-                                <form action="insert.php" method="post">
+                                <form action="change.php?login=<?php echo $row['username']?>" method="post">
                                     <div class="row">
                                         <div class="col-12 col-lg-6">
                                           <input type="text" class="form-control" id="text" placeholder="<?php echo $row['username']?>" name="username">
@@ -229,6 +229,7 @@
                             }
                           ?>
                         </div>
+                        <p class="signup"> <a href="index.php" >Έξοδος</p>
 
                     </div>
                 </div>
