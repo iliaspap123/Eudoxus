@@ -10,7 +10,7 @@
 
 <?php
 
-  $conn = new mysqli("localhost", "root", "", "database");
+  $conn = new mysqli("localhost", "root", "", "sdi1500057");
   if ($conn->connect_error) die($conn->connect_error);
   mysqli_set_charset($conn, "utf8");
 
@@ -222,7 +222,7 @@
                 $line = $result->fetch_assoc();
                 if($line2['name'] == $line['class']) {
            ?>
-          <form action="/action_page.php" style="margin-top: 15px;">
+          <form action="" style="margin-top: 15px;">
             <label>
             <input type="checkbox" name="vehicle1" value="Bike" />
             <div  style=" width: 70%;">
@@ -251,8 +251,8 @@
         <?php
         }
         ?>
-        <a href="dhlwsh.php" class="btn egames-btn mt-30">Ακύρωση</a>
-        <a href="dhlwsh.php" class="btn egames-btn mt-30">Υποβολή</a>
+        <a href="dhlwsh.php<?php echo $for_login; ?>" class="btn egames-btn mt-30">Ακύρωση</a>
+        <a href="dhlwsh.php<?php echo $for_login; ?>" class="btn egames-btn mt-30">Υποβολή</a>
 
     </div>
 		<script>

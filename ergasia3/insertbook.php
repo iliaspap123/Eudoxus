@@ -4,7 +4,7 @@
     $for_login .= $_GET['login'];
 
     $username = $_GET['login'];
-    $conn = new mysqli("localhost", "root", "", "database");
+    $conn = new mysqli("localhost", "root", "", "sdi1500057");
     if ($conn->connect_error) die($conn->connect_error);
     $query = "SELECT * FROM users WHERE username='$username'";
     $result = $conn->query($query);

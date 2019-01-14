@@ -10,7 +10,7 @@
 
 <?php
   $input=$_POST['top-search'];
-  $conn = new mysqli("localhost", "root", "", "database");
+  $conn = new mysqli("localhost", "root", "", "sdi1500057");
   if ($conn->connect_error) die($conn->connect_error);
   mysqli_set_charset($conn, "utf8");
 
