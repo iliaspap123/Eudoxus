@@ -1,4 +1,14 @@
 <?php
+  if ( isset($_GET['login']) ){
+    $for_login = "?login=";
+    $for_login .= $_GET['login'];
+  }
+  else{
+    $for_login = "";
+  }
+?>
+
+<?php
 
   $conn = new mysqli("localhost", "root", "", "database");
   if ($conn->connect_error) die($conn->connect_error);
@@ -69,21 +79,31 @@
                     <div class="col-12 d-flex align-items-center justify-content-between">
                         <!-- Logo Area -->
                         <div class="logo">
-                            <a href="index.php"><img src="img/core-img/logo.png" alt=""></a>
+                            <a href="index.php<?php echo $for_login; ?>"><img src="img/core-img/logo.png" alt=""></a>
                         </div>
 
                         <!-- Search & Login Area -->
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="#" method="post">
+                                <form action="search.php" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                             <!-- Login Area -->
                             <div class="login-area">
+                              <?php
+                                if ( isset($_GET['login']) ){
+                              ?>
+                                <a href="profil.php?login=<?php echo $_GET['login']; ?>"><span><?php echo $_GET['login'] ?></span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                              <?php
+                                } else{
+                              ?>
                                 <a href="login.php"><span>Είσοδος / Εγγραφή</span> <i class="fa fa-lock" aria-hidden="true"></i></a>
+                              <?php
+                              }
+                              ?>
                             </div>
                         </div>
                     </div>
@@ -116,14 +136,15 @@
                                 <ul>
                                     <li><a href="#">Φοιτητής</a>
                                         <ul class="dropdown">
-                                            <li><a href="#">Δήλωση Συγγραμμάτων</a></li>
+                                            <li><a href="dhlwsh.php<?php echo $for_login; ?>">Δήλωση Συγγραμμάτων</a></li>
                                             <li><a href="#">Εύδοξος +</a></li>
-                                            <li><a href="map.html">Σημεία Διανομής</a></li>
+                                            <li><a href="map.php<?php echo $for_login; ?>">Σημεία Διανομής</a></li>
                                             <li><a href="#">Παράδοση Συγγραμμάτων</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Γραμματεία</a>
                                         <ul class="dropdown">
+                                          <li><a href="insertbook.php<?php echo $for_login; ?>">Προσθήκη Βιβλίου</a></li>
                                             <li><a href="#">Διαχείριση Συγγραμμάτων</a></li>
                                             <li><a href="#">Διαχείριση Γραμματείας</a></li>
                                         </ul>
@@ -141,19 +162,19 @@
                                           <li><a href="#">Παράδοση Συγγραμμάτων</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="announcement.html">Ανακοινώσεις</a></li>
-                                    <li><a href="contact.html">Επικοινωνία</a></li>
+                                    <li><a href="announcement.php<?php echo $for_login; ?>">Ανακοινώσεις</a></li>
+                                    <li><a href="contact.php<?php echo $for_login; ?>">Επικοινωνία</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
                         </div>
                     </nav>
 
-					<ul class="breadcrumb">
-						<li><a href="index.php">Αρχική</a></li>
-						<li>  »  <li>
-						<li><a href="dhlwsh.php">Δήλωση Συγγραμμάτων</a></li>
-					</ul>
+                    <ul class="breadcrumb">
+                     <li><a href="index.php<?php echo $for_login; ?>">Αρχική</a></li>
+                     <li>  »  <li>
+                     <li><a href="dhlwsh.php<?php echo $for_login; ?>">Δήλωση Συγγραμμάτων</a></li>
+                   </ul>
                 </div>
             </div>
         </div>
@@ -281,9 +302,9 @@
                             <div class="widget-content">
                                 <nav>
                                     <ul>
-                                        <li><a href="#">Πως να δηλώσω σύγγραμμα;</a></li>
-                                        <li><a href="#">Γιατί να ανταλλάξω βιβλία;</a></li>
-                                        <li><a href="#">Πως να κάνω ανταλλαγή;</a></li>
+                                        <li><a href="info_foithth.php<?php echo $for_login; ?>">Πως να δηλώσω σύγγραμμα;</a></li>
+                                        <li><a href="info_foithth.php<?php echo $for_login; ?>">Γιατί να ανταλλάξω βιβλία;</a></li>
+                                        <li><a href="info_foithth.php<?php echo $for_login; ?>">Πως να κάνω ανταλλαγή;</a></li>
                                         <!-- <li><a href="#">God of war</a></li>
                                         <li><a href="#">Persona 5</a></li> -->
                                     </ul>
@@ -301,11 +322,9 @@
                             <div class="widget-content">
                                 <nav>
                                     <ul>
-                                        <li><a href="#">Ποιές είναι οι αρμοδιότητές μου;</a></li>
-                                        <li><a href="#">Πως να διαχειριστώ συγγράμματα;</a></li>
-                                        <li><a href="#">Πως να διαχειριστώ μαθήματα;</a></li>
-                                        <!-- <li><a href="#">God of war</a></li>
-                                        <li><a href="#">Persona 5</a></li> -->
+                                        <li><a href="info_grammateias.php<?php echo $for_login; ?>">Ποιές είναι οι αρμοδιότητές μου;</a></li>
+                                        <li><a href="info_grammateias.php<?php echo $for_login; ?>">Πως να διαχειριστώ συγγράμματα;</a></li>
+                                        <li><a href="info_grammateias.php<?php echo $for_login; ?>">Πως να διαχειριστώ μαθήματα;</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -323,8 +342,6 @@
                                     <ul>
                                         <li><a href="#">Ποιές είναι οι ενέργειές μου;</a></li>
                                         <li><a href="#">Τι μου προσφέρει ο Εύδοξος;</a></li>
-                                        <!-- <li><a href="#">Forum</a></li>
-                                        <li><a href="#">Contact</a></li> -->
                                     </ul>
                                 </nav>
                             </div>
@@ -343,8 +360,6 @@
                                         <li><a href="#"></a></li>
                                         <li><a href="#">Ποιές είναι οι αρμοδιότητές μου;</a></li>
                                         <li><a href="#">Πως να προσθέσω βιβλία;</a></li>
-                                        <!-- <li><a href="#">Πως να προσθέσω βιβλία;</a></li> -->
-                                        <!-- <li><a href="#">Persona 5</a></li> -->
                                     </ul>
                                 </nav>
                             </div>
