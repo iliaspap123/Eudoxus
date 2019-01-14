@@ -9,9 +9,7 @@
    $email = $_POST['email'];
    $thlefwno = $_POST['thlefwno'];
    $type = "f";
-   // if ( !isset($_POST['username']) or !isset($_POST['password']) or !isset($_POST['sxolh']) or
-    // !isset($_POST['idruma']) or !isset($_POST['email']) or !isset($_POST['thlefwno']) ){
-   //   header('Location: signup.php?');
+
    if(!strlen($username) or !strlen($password) or !strlen($idruma) or !strlen($sxolh) or !strlen($email) or !strlen($thlefwno)) {
      mysqli_close($conn);
      header('Location: signup.php');

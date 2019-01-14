@@ -118,7 +118,4 @@
        header('Location: profil.php?login='.$oldusername);
      }
    }
-   // if ( !isset($_POST['username']) or !isset($_POST['password']) or !isset($_POST['sxolh']) or
-    // !isset($_POST['idruma']) or !isset($_POST['email']) or !isset($_POST['thlefwno']) ){
-   //   header('Location: signup.php?');
 ?>

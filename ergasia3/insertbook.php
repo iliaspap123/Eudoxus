@@ -2,9 +2,23 @@
   if ( isset($_GET['login']) ){
     $for_login = "?login=";
     $for_login .= $_GET['login'];
+
+    $username = $_GET['login'];
+    $conn = new mysqli("localhost", "root", "", "database");
+    if ($conn->connect_error) die($conn->connect_error);
+    $query = "SELECT * FROM users WHERE username='$username'";
+    $result = $conn->query($query);
+    $row = $result->fetch_assoc();
+
+    if($row['type'] == 'f' ){
+        mysqli_close($conn);
+        header('Location: index.php?login='.$username);
+    }
+    mysqli_close($conn);
   }
   else{
-    $for_login = "";
+    $for_login = " ";
+    header('Location: login.php');
   }
 ?>
 
@@ -55,7 +69,7 @@
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="search.php" method="post">
+                                <form action="search.php<?php echo $for_login; ?>" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
@@ -142,9 +156,7 @@
                     <ul class="breadcrumb">
                      <li><a href="index.php<?php echo $for_login; ?>">Αρχική</a></li>
                      <li>  »  <li>
-                     <li><a href="login.php<?php echo $for_login; ?>">Είσοδος</a></li>
-                     <li>  »  <li>
-                     <li><a href="signup.php<?php echo $for_login; ?>">Εγγραφή Φοιτητή</a></li>
+                     <li><a href="insertbook.php<?php echo $for_login; ?>">Προσθήκη Βιβλίου</a></li>
                    </ul>
                 </div>
             </div>
@@ -161,38 +173,51 @@
                 <div class="col-12 col-lg-8">
                     <div class="mt-100">
                         <div class="post-a-comment-area mb-30 clearfix" id="reply">
-                            <h4 class="mb-50">Εισαγωγή Στοιχείων Φοιτητή</h4>
+                            <h4 class="mb-50">Εισαγωγή Στοιχείων Συγγράμματος</h4>
 
                             <!-- Reply Form -->
                             <div class="contact-form-area">
-                                <form action="insert.php" method="post">
+                                <form action="newbook.php<?php echo $for_login; ?>" method="post">
                                     <div class="row">
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="text" placeholder="Όνομα χρήστη*" name="username">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Κωδικός πρόσβασης*" name="password">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Ίδρυμα*" name="idruma">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Σχολή*" name="sxolh">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="email" class="form-control" id="name" placeholder="Email*" name="email">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Τηλέφωνο*" name="thlefwno">
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn egames-btn w-100" type="submit">Εγγραφή</button>
-                                        </div>
+                                      <div class="col-12 col-lg-6">
+                                        <input type="text" class="form-control" id="text" placeholder="Τίτλος*" name="title">
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                        <input type="text" class="form-control" id="name" placeholder="Isbn*" name="isbn">
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                        <input type="text" class="form-control" id="name" placeholder="Συγγραφέας*" name="author">
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                        <input type="text" class="form-control" id="name" placeholder="Εκδότης*" name="publisher">
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                        <input type="text" class="form-control" id="name" placeholder="Βιβλιοπωλείο*" name="bookstore">
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                        <input type="text" class="form-control" id="name" placeholder="Έτος*" name="year">
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                        <input type="text" class="form-control" id="text" placeholder="Πληροφορίες*" name="info">
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                        <input type="text" class="form-control" id="text" placeholder="Εικόνα μορφής: img/books/my_book.jpg" name="img">
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                        <input type="text" class="form-control" id="text" placeholder="Μάθημα*" name="class">
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                        <a class="btn egames-btn w-100" href="index.php"  >Ακύρωση</a>
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                        <button class="btn egames-btn w-100" >Προσθήκη</button>
+                                      </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <p class="signup"> <a href="signupgram.php" >Εγγραφή Γραμματείας</p>
 
                     </div>
                 </div>

@@ -8,18 +8,6 @@
   }
 ?>
 
-<?php
-  $input=$_POST['top-search'];
-  $conn = new mysqli("localhost", "root", "", "database");
-  if ($conn->connect_error) die($conn->connect_error);
-  mysqli_set_charset($conn, "utf8");
-
-  $query = "SELECT * FROM book WHERE title LIKE '%$input%' OR isbn LIKE '%$input%' OR author LIKE '%$input%' OR publisher LIKE '%$input%' OR bookstore LIKE '%$input%' OR year LIKE '%$input%' OR info LIKE '%$input%'";
-  $result = $conn->query($query);
-  if (!$result) die($conn->error);
-  mysqli_close($conn);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,7 +55,7 @@
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="search.php" method="post">
+                                <form action="search.php<?php echo $for_login; ?>" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
@@ -154,7 +142,7 @@
                     <ul class="breadcrumb">
                      <li><a href="index.php<?php echo $for_login; ?>">Αρχική</a></li>
                      <li>  »  <li>
-                     <li><a href="search.php<?php echo $for_login; ?>">Αναζήτηση</a></li>
+                     <li><a href="map.php<?php echo $for_login; ?>">Σημεία Διανομής</a></li>
                    </ul>
                 </div>
             </div>
@@ -163,53 +151,22 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-    <!-- ##### Articles Area Start ##### -->
-    <section class="articles-area section-padding-0-100">
+
+    <!-- ##### Contact Area Start ##### -->
+    <section class="contact-area section-padding-100">
         <div class="container">
-            <div class="row justify-content-center">
-                <!-- Articles Post Area -->
-                <div class="col-12 col-lg-8">
-                    <div class="mt-100">
-
-                        <ol>
-                        <!-- *** Single Articles Area *** -->
-                        <?php
-                          if ( strlen($input)!=0){
-                            $rows = $result->num_rows;
-                            // echo $rows;
-                            for ( $j=0; $j<$rows; ++$j ){
-                              $result->data_seek($j);
-                              $line = $result->fetch_assoc();
-                            // if($row['title'] == $title ){
-                            //   echo $row['title'];
-                        ?>
-                          <li>
-                            <div class="single-articles-area d-flex flex-wrap mb-30">
-                                <div class="article-thumbnail">
-                                    <img src="<?php echo $line['img']; ?>" alt="">
-                                </div>
-                                <div class="article-content">
-                                    <a href="single-post.html" class="post-title">  <?php echo $line['title']; ?> </a>
-                                    <div class="post-meta">
-                                        <a href="#" class="post-date"><?php echo $line['year']; ?></a>
-                                        <a href="#" class="post-comments"><?php echo $line['author']; ?></a>
-                                    </div>
-                                    <p><?php echo $line['info']; ?></p>
-                                </div>
-                            </div>
-                          </li>
-                        <?php
-                          }}
-                        ?>
-                      </ol>
-                      <p class="signup"><a ><?php echo "Βρέθηκαν $rows αποτελέσματα" ?></p>
-
+            <div class="row">
+                <div class="col-12">
+                    <!-- Google Maps -->
+                    <div class="map-area">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50310.604001578664!2d23.703319876009434!3d37.99083200834182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd1f067043f1%3A0x2736354576668ddd!2zzpHOuM6uzr3OsQ!5e0!3m2!1sel!2sgr!4v1545084019792" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ##### Articles Area End ##### -->
+    <!-- ##### Contact Area End ##### -->
+
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">

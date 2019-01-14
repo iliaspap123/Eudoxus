@@ -9,29 +9,14 @@
 ?>
 
 <?php
-  $login=$_GET['login'];
+  $input=$_POST['top-search'];
   $conn = new mysqli("localhost", "root", "", "database");
   if ($conn->connect_error) die($conn->connect_error);
   mysqli_set_charset($conn, "utf8");
 
-  $query = "SELECT * FROM users WHERE username='$login'";
+  $query = "SELECT * FROM book WHERE title LIKE '%$input%' OR isbn LIKE '%$input%' OR author LIKE '%$input%' OR publisher LIKE '%$input%' OR bookstore LIKE '%$input%' OR year LIKE '%$input%' OR info LIKE '%$input%'";
   $result = $conn->query($query);
   if (!$result) die($conn->error);
-
-  $row = $result->fetch_assoc();
-
-  $type = $row['type'];
-  if( $type == 'f' ){
-    $query = "SELECT * FROM foithtes WHERE username='$login'";
-    $result = $conn->query($query);
-    if (!$result) die($conn->error);
-  }
-  else{
-    $query = "SELECT * FROM gramatteies WHERE username='$login'";
-    $result = $conn->query($query);
-    if (!$result) die($conn->error);
-  }
-  $row = $result->fetch_assoc();
   mysqli_close($conn);
 ?>
 
@@ -82,7 +67,7 @@
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="search.php" method="post">
+                                <form action="search.php<?php echo $for_login; ?>" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
@@ -169,7 +154,7 @@
                     <ul class="breadcrumb">
                      <li><a href="index.php<?php echo $for_login; ?>">Αρχική</a></li>
                      <li>  »  <li>
-                     <li><a href="profil.php<?php echo $for_login; ?>">Προφίλ</a></li>
+                     <li><a href="search.php<?php echo $for_login; ?>">Αναζήτηση</a></li>
                    </ul>
                 </div>
             </div>
@@ -178,92 +163,53 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-    <!-- ##### Post Details Area Start ##### -->
-    <section class="post-news-area section-padding-0-100">
+    <!-- ##### Articles Area Start ##### -->
+    <section class="articles-area section-padding-0-100">
         <div class="container">
             <div class="row justify-content-center">
-                <!-- Post Details Content Area -->
+                <!-- Articles Post Area -->
                 <div class="col-12 col-lg-8">
                     <div class="mt-100">
-                        <div class="post-a-comment-area mb-30 clearfix" id="reply">
-                            <h4 class="mb-50">Επεξεργασία Στοιχείων</h4>
 
-                            <!-- Reply Form -->
-                            <?php
-                              if ( $type == 'f' ){
-                            ?>
-                            <div class="contact-form-area">
-                                <form action="change.php?login=<?php echo $row['username']?>" method="post">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="text" placeholder="Όνομα χρήστη: <?php echo $row['username']?>" name="username">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Εισαγωγή νέου κωδικού*" name="password">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Ίδρυμα: <?php echo $row['idruma']?>" name="idruma">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Σχολή: <?php echo $row['sxolh']?>" name="sxolh">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="email" class="form-control" id="name" placeholder="Email: <?php echo $row['email']?>" name="email">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Τηλέφωνο: <?php echo $row['thlefwno']?>" name="thlefwno">
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn egames-btn w-100" type="submit">Υποβολή Αλλαγών</button>
-                                        </div>
+                        <ol>
+                        <!-- *** Single Articles Area *** -->
+                        <?php
+                          if ( strlen($input)!=0){
+                            $rows = $result->num_rows;
+                            // echo $rows;
+                            for ( $j=0; $j<$rows; ++$j ){
+                              $result->data_seek($j);
+                              $line = $result->fetch_assoc();
+                            // if($row['title'] == $title ){
+                            //   echo $row['title'];
+                        ?>
+                          <li>
+                            <div class="single-articles-area d-flex flex-wrap mb-30">
+                                <div class="article-thumbnail">
+                                    <img src="<?php echo $line['img']; ?>" alt="">
+                                </div>
+                                <div class="article-content">
+                                    <a href="single-post.html" class="post-title">  <?php echo $line['title']; ?> </a>
+                                    <div class="post-meta">
+                                        <a href="#" class="post-date"><?php echo $line['year']; ?></a>
+                                        <a href="#" class="post-comments"><?php echo $line['author']; ?></a>
                                     </div>
-                                </form>
+                                    <p><?php echo $line['info']; ?></p>
+                                </div>
                             </div>
-                            <?php
-                            }else{
-                            ?>
-                            <div class="contact-form-area">
-                                <form action="change.php?login=<?php echo $row['username']?>" method="post">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="text" placeholder="Όνομα χρήστη: <?php echo $row['username']?>" name="username">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Εισαγωγή νέου κωδικού*" name="password">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Ίδρυμα: <?php echo $row['idruma']?>" name="idruma">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Σχολή :<?php echo $row['sxolh']?>" name="sxolh">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="email" class="form-control" id="name" placeholder="Email: <?php echo $row['email']?>" name="email">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Τηλέφωνο: <?php echo $row['thlefwno']?>" name="thlefwno">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Πρόεδρος Τμήματος:<?php echo $row['proedros_tmhmatos']?>" name="proedros_tmhmatos">
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn egames-btn w-100" type="submit">Υποβολή Αλλαγών</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                          <?php
-                            }
-                          ?>
-                        </div>
-                        <p class="signup"> <a href="index.php" >Έξοδος</p>
+                          </li>
+                        <?php
+                          }}
+                        ?>
+                      </ol>
+                      <p class="signup"><a ><?php echo "Βρέθηκαν $rows αποτελέσματα" ?></p>
 
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ##### Post Details Area End ##### -->
+    <!-- ##### Articles Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">

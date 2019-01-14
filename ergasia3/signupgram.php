@@ -55,7 +55,7 @@
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="search.php" method="post">
+                                <form action="search.php<?php echo $for_login; ?>" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>

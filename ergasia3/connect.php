@@ -11,10 +11,9 @@
   $query = "SELECT * FROM users WHERE username='$username' and password='$password'";
   $result = $conn->query($query);
   if (!$result) die($conn->error);
-  // $rows = $result->num_rows;
+
   $row = $result->fetch_assoc();
   if($row['username'] == $username && $row['password'] == $password){
-      // $global_email = $username;
       mysqli_close($conn);
       header('Location: index.php?login='.$username);
   }

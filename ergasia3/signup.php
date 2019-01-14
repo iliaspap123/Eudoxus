@@ -55,7 +55,7 @@
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="search.php" method="post">
+                                <form action="search.php<?php echo $for_login; ?>" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
@@ -139,11 +139,13 @@
                         </div>
                     </nav>
 
-                  <ul class="breadcrumb">
-        						<li><a href="index.php<?php echo $for_login; ?>">Αρχική</a></li>
-        						<li>  »  <li>
-                    <li><a href="announcement.php<?php echo $for_login; ?>">Ανακοινώσεις</a></li>
-        					</ul>
+                    <ul class="breadcrumb">
+                     <li><a href="index.php<?php echo $for_login; ?>">Αρχική</a></li>
+                     <li>  »  <li>
+                     <li><a href="login.php<?php echo $for_login; ?>">Είσοδος</a></li>
+                     <li>  »  <li>
+                     <li><a href="signup.php<?php echo $for_login; ?>">Εγγραφή Φοιτητή</a></li>
+                   </ul>
                 </div>
             </div>
         </div>
@@ -151,73 +153,53 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-    <!-- ##### Articles Area Start ##### -->
-    <section class="articles-area section-padding-0-100">
+    <!-- ##### Post Details Area Start ##### -->
+    <section class="post-news-area section-padding-0-100">
         <div class="container">
             <div class="row justify-content-center">
-                <!-- Articles Post Area -->
+                <!-- Post Details Content Area -->
                 <div class="col-12 col-lg-8">
                     <div class="mt-100">
+                        <div class="post-a-comment-area mb-30 clearfix" id="reply">
+                            <h4 class="mb-50">Εισαγωγή Στοιχείων Φοιτητή</h4>
 
-                        <!-- *** Single Articles Area *** -->
-                        <div class="single-articles-area d-flex flex-wrap mb-30">
-                          <div class="article-content">
-                            <a href="#" class="post-title">Έναρξη Δήλωσης και Διανομής Συγγραμμάτων Χειμερινής Περιόδου 2018-19</a>
-                            <div class="post-meta">
-                              <a href="#" class="post-date">Οκτώμβριος 23, 2018</a>
+                            <!-- Reply Form -->
+                            <div class="contact-form-area">
+                                <form action="insert.php" method="post">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="text" placeholder="Όνομα χρήστη*" name="username">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Κωδικός πρόσβασης*" name="password">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Ίδρυμα*" name="idruma">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Σχολή*" name="sxolh">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="email" class="form-control" id="name" placeholder="Email*" name="email">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Τηλέφωνο*" name="thlefwno">
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn egames-btn w-100" type="submit">Εγγραφή</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <p>Οι δηλώσεις διδακτικών συγγραμμάτων από τους φοιτητές θα ξεκινήσουν την Τετάρτη 24
-                              Οκτωβρίου 2018 και θα πρέπει να έχουν ολοκληρωθεί έως την Παρασκευή 21 Δεκεμβρίου 2018. Η διανομή των διδακτικών συγγραμμάτων θα ξεκινήσει την Τετάρτη 24 Οκτωβρίου
-                              2018 και θα ολοκληρωθεί την Παρασκευή 11 Ιανουαρίου 2019. Στο ίδιο χρονικό διάστημα θα πρέπει να
-                              ολοκληρωθεί και η διαδικασία παράδοσης από τους εκδοτικούς οίκους των παραγγελθέντων από τις
-                              βιβλιοθήκες διδακτικών συγγραμμάτων.</p>
-                          </div>
                         </div>
+                        <p class="signup"> <a href="signupgram.php" >Εγγραφή Γραμματείας</p>
 
-                        <!-- *** Single Articles Area *** -->
-                        <div class="single-articles-area d-flex flex-wrap mb-30">
-                          <div class="article-content">
-                            <a href="single-post.html" class="post-title">Νέα Παράταση Περιόδου Διανομής Συγγραμμάτων</a>
-                            <div class="post-meta">
-                              <a href="#" class="post-date">Μάιος 31, 2018</a>
-                            </div>
-                            <p>Παρατείνεται εκ νέου η προθεσμία για τη διανομή των συγγραμμάτων στους φοιτητές
-                              έως την Παρασκευή 8 Ιουνίου 2018. Η ανωτέρω προθεσμία ισχύει και για τη διανομή συγγραμμάτων στις
-                              βιβλιοθήκες.</p>
-                          </div>
-                        </div>
-
-                        <!-- *** Single Articles Area *** -->
-                        <div class="single-articles-area d-flex flex-wrap mb-30">
-                          <div class="article-content">
-                            <a href="single-post.html" class="post-title">Παράταση Περιόδου Δηλώσεων και Διανομής Συγγραμμάτων</a>
-                            <div class="post-meta">
-                              <div class="post-meta">
-                                <a href="#" class="post-date">Μάιος 3, 2018</a>
-                              </div>
-                            </div>
-                            <p>Παρατείνεται η προθεσμία δηλώσεων διδακτικών βιβλίων από τους φοιτητές για το τρέχον εαρινό
-                              εξάμηνο έως και την Παρασκευή 18 Μαΐου 2018. Επίσης, ως νέα καταληκτική ημερομηνία για τη διανομή
-                              των συγγραμμάτων στους φοιτητές ορίζεται η Παρασκευή 1 Ιουνίου 2018. Οι ανωτέρω προθεσμίες
-                              ισχύουν και για την δήλωση-διανομή συγγραμμάτων στις βιβλιοθήκες.
-                            </p>
-                          </div>
-                        </div>
-
-                        <!-- ### Pagination Area ### -->
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination mt-100">
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ##### Articles Area End ##### -->
+    <!-- ##### Post Details Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">

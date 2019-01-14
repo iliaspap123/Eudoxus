@@ -55,7 +55,7 @@
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="search.php" method="post">
+                                <form action="search.php<?php echo $for_login; ?>" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
@@ -138,7 +138,12 @@
                             <!-- Nav End -->
                         </div>
                     </nav>
-                    
+
+                    <ul class="breadcrumb">
+                     <li><a href="index.php<?php echo $for_login; ?>">Αρχική</a></li>
+                     <li>  »  <li>
+                     <li><a href="login.php<?php echo $for_login; ?>">Είσοδος</a></li>
+                   </ul>
                 </div>
             </div>
         </div>
@@ -146,37 +151,41 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-    <!-- ##### Games Area Start ##### -->
-    <div class="games-area section-padding-100-0">
+    <!-- ##### Post Details Area Start ##### -->
+    <section class="post-news-area section-padding-0-100">
         <div class="container">
-            <div class="row">
-                <!-- Single Games Area -->
-                <div class="col-12 col-md-4">
-                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="100ms">
-                        <img src="img/bg-img/book2.png" alt="">
-                        <a href="dhlwsh.php<?php echo $for_login; ?>" class="btn egames-btn mt-30">Δήλωση Συγγραμμάτων</a>
-                    </div>
-                </div>
+            <div class="row justify-content-center">
+                <!-- Post Details Content Area -->
+                <div class="col-12 col-lg-8">
+                    <div class="mt-100">
+                        <div class="post-a-comment-area mb-30 clearfix" id="reply">
+                            <h4 class="mb-50">Εισαγωγή Στοιχείων</h4>
 
-                <!-- Single Games Area -->
-                <div class="col-12 col-md-4">
-                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="300ms">
-                        <img src="img/bg-img/desk2.png" alt="">
-                        <a href="dhlwsh.php<?php echo $for_login; ?>" class="btn egames-btn mt-30">Διαχείριση Συγγραμμάτων-Μαθημάτων</a>
-                    </div>
-                </div>
+                            <!-- Reply Form -->
+                            <div class="contact-form-area">
+                                <form action="connect.php" method="post">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="text" placeholder="Username*" name="username">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Password*" name="password">
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn egames-btn w-100" type="submit">Είσοδος</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
-                <!-- Single Games Area -->
-                <div class="col-12 col-md-4">
-                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="500ms">
-                        <img src="img/bg-img/pencil2.png" alt="">
-                        <a href="#" class="btn egames-btn mt-30">Διανομή Συγγραμμάτων</a>
+                        <p class="signup"> <a href="signup.php" >Εγγραφή</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- ##### Games Area End ##### -->
+    </section>
+    <!-- ##### Post Details Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">

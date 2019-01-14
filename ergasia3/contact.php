@@ -55,7 +55,7 @@
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="search.php" method="post">
+                                <form action="search.php<?php echo $for_login; ?>" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
@@ -140,10 +140,10 @@
                     </nav>
 
                     <ul class="breadcrumb">
-                     <li><a href="index.php<?php echo $for_login; ?>">Αρχική</a></li>
-                     <li>  »  <li>
-                     <li><a href="login.php<?php echo $for_login; ?>">Είσοδος</a></li>
-                   </ul>
+          						<li><a href="index.php<?php echo $for_login; ?>">Αρχική</a></li>
+          						<li>  »  <li>
+                      <li><a href="contact.php<?php echo $for_login; ?>">Επικοινωνία</a></li>
+          					</ul>
                 </div>
             </div>
         </div>
@@ -151,41 +151,31 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-    <!-- ##### Post Details Area Start ##### -->
-    <section class="post-news-area section-padding-0-100">
+    <!-- ##### Contact Area Start ##### -->
+    <section class="contact-area section-padding-100">
         <div class="container">
-            <div class="row justify-content-center">
-                <!-- Post Details Content Area -->
-                <div class="col-12 col-lg-8">
-                    <div class="mt-100">
-                        <div class="post-a-comment-area mb-30 clearfix" id="reply">
-                            <h4 class="mb-50">Εισαγωγή Στοιχείων</h4>
-
-                            <!-- Reply Form -->
-                            <div class="contact-form-area">
-                                <form action="connect.php" method="post">
-                                    <div class="row">
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="text" placeholder="Username*" name="username">
-                                        </div>
-                                        <div class="col-12 col-lg-6">
-                                          <input type="text" class="form-control" id="name" placeholder="Password*" name="password">
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn egames-btn w-100" type="submit">Είσοδος</button>
-                                        </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <div class="contact-content mb-100">
+                                <!-- Single Contact Info -->
+                                <div class="single-contact-info d-flex align-items-center">
+                                    <div class="title">
+                                        <p>Τηλέφωνο</p>
                                     </div>
-                                </form>
+                                    <p>Μπορείτε να επικοινωνήσετε με το Γραφείο Αρωγής της δράσης στο τηλέφωνο
+                                      215 215 7850. Ώρες λειτουργίας Δευτέρα με Παρασκευή 09:00 πμ - 17:00 μμ</p>
+                                </div>
                             </div>
                         </div>
-
-                        <p class="signup"> <a href="signup.php" >Εγγραφή</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
-    <!-- ##### Post Details Area End ##### -->
+    <!-- ##### Contact Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
@@ -206,8 +196,6 @@
                                         <li><a href="info_foithth.php<?php echo $for_login; ?>">Πως να δηλώσω σύγγραμμα;</a></li>
                                         <li><a href="info_foithth.php<?php echo $for_login; ?>">Γιατί να ανταλλάξω βιβλία;</a></li>
                                         <li><a href="info_foithth.php<?php echo $for_login; ?>">Πως να κάνω ανταλλαγή;</a></li>
-                                        <!-- <li><a href="#">God of war</a></li>
-                                        <li><a href="#">Persona 5</a></li> -->
                                     </ul>
                                 </nav>
                             </div>

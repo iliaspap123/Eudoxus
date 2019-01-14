@@ -86,7 +86,7 @@
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="search.php" method="post">
+                                <form action="search.php<?php echo $for_login; ?>" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
@@ -186,7 +186,7 @@
     <div class="games-area section-padding-100-0">
         <div class="container" id="pad">
 			<p>
-			Επελεξε σχολή
+			Επέλεξε σχολή
 
 			<select id="mySelect2" onchange="myFunction2()">
         <!-- <option value=""> -->
@@ -305,8 +305,6 @@
                                         <li><a href="info_foithth.php<?php echo $for_login; ?>">Πως να δηλώσω σύγγραμμα;</a></li>
                                         <li><a href="info_foithth.php<?php echo $for_login; ?>">Γιατί να ανταλλάξω βιβλία;</a></li>
                                         <li><a href="info_foithth.php<?php echo $for_login; ?>">Πως να κάνω ανταλλαγή;</a></li>
-                                        <!-- <li><a href="#">God of war</a></li>
-                                        <li><a href="#">Persona 5</a></li> -->
                                     </ul>
                                 </nav>
                             </div>

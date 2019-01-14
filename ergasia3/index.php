@@ -55,7 +55,7 @@
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="search.php" method="post">
+                                <form action="search.php<?php echo $for_login; ?>" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
@@ -139,11 +139,6 @@
                         </div>
                     </nav>
 
-                    <ul class="breadcrumb">
-          						<li><a href="index.php<?php echo $for_login; ?>">Αρχική</a></li>
-          						<li>  »  <li>
-                      <li><a href="contact.php<?php echo $for_login; ?>">Επικοινωνία</a></li>
-          					</ul>
                 </div>
             </div>
         </div>
@@ -151,31 +146,37 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-    <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area section-padding-100">
+    <!-- ##### Games Area Start ##### -->
+    <div class="games-area section-padding-100-0">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <div class="row">
-                        <div class="col-12 col-lg-4">
-                            <div class="contact-content mb-100">
-                                <!-- Single Contact Info -->
-                                <div class="single-contact-info d-flex align-items-center">
-                                    <div class="title">
-                                        <p>Τηλέφωνο</p>
-                                    </div>
-                                    <p>Μπορείτε να επικοινωνήσετε με το Γραφείο Αρωγής της δράσης στο τηλέφωνο
-                                      215 215 7850. Ώρες λειτουργίας Δευτέρα με Παρασκευή 09:00 πμ - 17:00 μμ</p>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Single Games Area -->
+                <div class="col-12 col-md-4">
+                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="100ms">
+                        <img src="img/bg-img/book2.png" alt="">
+                        <a href="dhlwsh.php<?php echo $for_login; ?>" class="btn egames-btn mt-30">Δήλωση Συγγραμμάτων</a>
                     </div>
                 </div>
 
+                <!-- Single Games Area -->
+                <div class="col-12 col-md-4">
+                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="300ms">
+                        <img src="img/bg-img/desk2.png" alt="">
+                        <a href="dhlwsh.php<?php echo $for_login; ?>" class="btn egames-btn mt-30">Διαχείριση Συγγραμμάτων-Μαθημάτων</a>
+                    </div>
+                </div>
+
+                <!-- Single Games Area -->
+                <div class="col-12 col-md-4">
+                    <div class="single-games-area text-center mb-100 wow fadeInUp" data-wow-delay="500ms">
+                        <img src="img/bg-img/pencil2.png" alt="">
+                        <a href="#" class="btn egames-btn mt-30">Διανομή Συγγραμμάτων</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
-    <!-- ##### Contact Area End ##### -->
+    </div>
+    <!-- ##### Games Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">

@@ -8,6 +8,33 @@
   }
 ?>
 
+<?php
+  $login=$_GET['login'];
+  $conn = new mysqli("localhost", "root", "", "database");
+  if ($conn->connect_error) die($conn->connect_error);
+  mysqli_set_charset($conn, "utf8");
+
+  $query = "SELECT * FROM users WHERE username='$login'";
+  $result = $conn->query($query);
+  if (!$result) die($conn->error);
+
+  $row = $result->fetch_assoc();
+
+  $type = $row['type'];
+  if( $type == 'f' ){
+    $query = "SELECT * FROM foithtes WHERE username='$login'";
+    $result = $conn->query($query);
+    if (!$result) die($conn->error);
+  }
+  else{
+    $query = "SELECT * FROM gramatteies WHERE username='$login'";
+    $result = $conn->query($query);
+    if (!$result) die($conn->error);
+  }
+  $row = $result->fetch_assoc();
+  mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +82,7 @@
                         <div class="search-login-area d-flex align-items-center">
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="search.php" method="post">
+                                <form action="search.php<?php echo $for_login; ?>" method="post">
                                     <input type="search" name="top-search" id="topSearch" placeholder="Αναζήτηση">
                                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>
                                 </form>
@@ -142,7 +169,7 @@
                     <ul class="breadcrumb">
                      <li><a href="index.php<?php echo $for_login; ?>">Αρχική</a></li>
                      <li>  »  <li>
-                     <li><a href="map.php<?php echo $for_login; ?>">Σημεία Διανομής</a></li>
+                     <li><a href="profil.php<?php echo $for_login; ?>">Προφίλ</a></li>
                    </ul>
                 </div>
             </div>
@@ -151,22 +178,92 @@
     </header>
     <!-- ##### Header Area End ##### -->
 
-
-    <!-- ##### Contact Area Start ##### -->
-    <section class="contact-area section-padding-100">
+    <!-- ##### Post Details Area Start ##### -->
+    <section class="post-news-area section-padding-0-100">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Google Maps -->
-                    <div class="map-area">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50310.604001578664!2d23.703319876009434!3d37.99083200834182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd1f067043f1%3A0x2736354576668ddd!2zzpHOuM6uzr3OsQ!5e0!3m2!1sel!2sgr!4v1545084019792" allowfullscreen></iframe>
+            <div class="row justify-content-center">
+                <!-- Post Details Content Area -->
+                <div class="col-12 col-lg-8">
+                    <div class="mt-100">
+                        <div class="post-a-comment-area mb-30 clearfix" id="reply">
+                            <h4 class="mb-50">Επεξεργασία Στοιχείων</h4>
+
+                            <!-- Reply Form -->
+                            <?php
+                              if ( $type == 'f' ){
+                            ?>
+                            <div class="contact-form-area">
+                                <form action="change.php?login=<?php echo $row['username']?>" method="post">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="text" placeholder="Όνομα χρήστη: <?php echo $row['username']?>" name="username">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Εισαγωγή νέου κωδικού*" name="password">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Ίδρυμα: <?php echo $row['idruma']?>" name="idruma">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Σχολή: <?php echo $row['sxolh']?>" name="sxolh">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="email" class="form-control" id="name" placeholder="Email: <?php echo $row['email']?>" name="email">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Τηλέφωνο: <?php echo $row['thlefwno']?>" name="thlefwno">
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn egames-btn w-100" type="submit">Υποβολή Αλλαγών</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <?php
+                            }else{
+                            ?>
+                            <div class="contact-form-area">
+                                <form action="change.php?login=<?php echo $row['username']?>" method="post">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="text" placeholder="Όνομα χρήστη: <?php echo $row['username']?>" name="username">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Εισαγωγή νέου κωδικού*" name="password">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Ίδρυμα: <?php echo $row['idruma']?>" name="idruma">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Σχολή :<?php echo $row['sxolh']?>" name="sxolh">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="email" class="form-control" id="name" placeholder="Email: <?php echo $row['email']?>" name="email">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Τηλέφωνο: <?php echo $row['thlefwno']?>" name="thlefwno">
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                          <input type="text" class="form-control" id="name" placeholder="Πρόεδρος Τμήματος:<?php echo $row['proedros_tmhmatos']?>" name="proedros_tmhmatos">
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn egames-btn w-100" type="submit">Υποβολή Αλλαγών</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                          <?php
+                            }
+                          ?>
+                        </div>
+                        <p class="signup"> <a href="index.php" >Έξοδος</p>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ##### Contact Area End ##### -->
-
+    <!-- ##### Post Details Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
